@@ -18,9 +18,9 @@ export function HeroSection() {
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button asChild size="lg" className="rounded-full px-8">
-              <Link href="/analyze">
+              <Link href="/analyze" className="">
                 Try for Free
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2" size={24} />
               </Link>
             </Button>
             <Button

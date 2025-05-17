@@ -100,7 +100,7 @@ export function ChatInterface() {
       )}
 
       <Card className="flex-1 flex flex-col h-[calc(100vh-220px)] min-h-[500px]">
-        <div className="flex justify-between items-center p-4 border-b">
+        <div className="flex justify-between items-center p-4  border-b">
           <div className="flex items-center space-x-2">
             <Bot className="h-5 w-5 text-primary" />
             <h2 className="font-semibold">Legal Assistant</h2>
@@ -116,7 +116,7 @@ export function ChatInterface() {
           </Button>
         </div>
 
-        <ScrollArea className="flex-1 p-4">
+        <ScrollArea className="flex-1 p-4 overflow-auto">
           <div className="space-y-4">
             {messages.map((message) => (
               <MessageBubble

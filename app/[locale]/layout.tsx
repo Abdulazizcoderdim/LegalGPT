@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description:
     "Understand legal documents instantly with AI-powered summaries and explanations. Simplify legal processes and save time with LegalGPT.",
   icons: {
-    icon: "",
+    icon: "/icon.jfif",
   },
 };
 

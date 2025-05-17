@@ -56,7 +56,7 @@ export function DocumentSidebar({ document }: DocumentSidebarProps) {
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full justify-start text-sm h-auto py-2"
+                className="w-full justify-start text-xs h-auto py-2"
               >
                 What does the non-compete clause mean?
               </Button>

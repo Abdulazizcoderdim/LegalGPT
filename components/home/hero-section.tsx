@@ -1,25 +1,29 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function HeroSection() {
+  const t = useTranslations("HomePage");
+
+  const title = t.raw("title").split("<highlight>");
+  const [before, rest] = title;
+  const [highlighted, after] = rest.split("</highlight>");
+
   return (
     <div className="relative overflow-hidden bg-background py-24 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            Understand Legal Documents{" "}
-            <span className="text-primary">Instantly</span> with AI
+            {before} <span className="text-primary">{highlighted}</span> {after}
           </h1>
           <p className="mt-6 text-lg md:text-xl leading-8 text-muted-foreground">
-            Paste or upload any legal text, and our AI will make it
-            human-readable. Get explanations, summaries, and answers to your
-            questions.
+            {t("description")}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button asChild size="lg" className="rounded-full px-8">
               <Link href="/analyze" className="">
-                Try for Free
+                {t("tryNow")}
                 <ArrowRight className="ml-2" size={24} />
               </Link>
             </Button>
@@ -29,7 +33,7 @@ export function HeroSection() {
               size="lg"
               className="rounded-full px-8"
             >
-              <Link href="#how-it-works">Learn More</Link>
+              <Link href="#how-it-works">{t("learnMore")}</Link>
             </Button>
           </div>
         </div>

@@ -1,6 +1,8 @@
 {
   "HomePage": {
-    "title": "Salom dunyo!",
-    "about": "Go to the about page"
+    "title": "Huquqiy hujjatlarni AI yordamida <highlight>darhol</highlight> tushuning",
+    "description": "Istalgan huquqiy matnni joylashtiring yoki yuklang — sun'iy intellekt uni oddiy va tushunarli tilda izohlaydi. Siz qisqacha mazmun, tushuntirishlar va savollaringizga javoblar olasiz.",
+    "learnMore": "Ko'proq o'qish",
+    "tryNow": "Bepul sinab ko'ring"
   }
 }

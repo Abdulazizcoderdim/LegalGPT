@@ -1,6 +1,8 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "title": "Understand Legal Documents <highlight>Instantly</highlight> with AI",
+    "description": "Paste or upload any legal text, and our AI will make it human-readable. Get explanations, summaries, and answers to your questions.",
+    "learnMore": "Learn More",
+    "tryNow": "Try for Free"
   }
 }

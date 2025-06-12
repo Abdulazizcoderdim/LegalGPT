@@ -9,6 +9,7 @@ import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { AnalysisResult } from "./analysis-result";
 import { HighlightItem } from "@/types";
+import axios from "axios";
 
 // Mock data - in a real app, this would come from the AI analysis
 const mockAnalysis = {
@@ -54,11 +55,7 @@ export function AnalyzeDocument() {
 
     setIsAnalyzing(true);
 
-    // Simulate API call delay
-    setTimeout(() => {
-      setAnalysisResult(mockAnalysis);
-      setIsAnalyzing(false);
-    }, 2000);
+    const res = await axios.post("/api/analyze", {});
   };
 
   const handleFileChange = (file: File | null) => {

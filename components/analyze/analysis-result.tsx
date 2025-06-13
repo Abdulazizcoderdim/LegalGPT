@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -22,6 +22,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { toast } from "sonner";
 import { HighlightItem } from "@/types";
+import { translateWithLibre } from "@/lib/translateWithLibre";
 
 interface AnalysisResultProps {
   result: {
@@ -38,6 +39,17 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
     navigator.clipboard.writeText(text);
     toast("Copied to clipboard!");
   };
+
+  useEffect(() => {
+    const translate = async () => {
+      if (result?.summary) {
+        const summaryUz = await translateWithLibre(result.summary);
+        result.summary = summaryUz;
+      }
+    };
+
+    translate();
+  }, []);
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {

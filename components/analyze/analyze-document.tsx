@@ -37,13 +37,19 @@ export function AnalyzeDocument() {
     }
   };
 
-  const handleFileChange = (file: File | null) => {
+  const handleFileChange = async (file: File | null) => {
     setFile(file);
-    // In a real app, we would extract text from the file here
-    // For now, we'll just set a placeholder message
+    const formData = new FormData();
+    formData.append("file", file!);
+
+    const res = await axios.post("/api/upload", {
+      formData,
+    });
+
     if (file) {
-      setText(`[Text extracted from ${file.name}]`);
+      setText(res.data.text);
     }
+    console.log("Extracted text:", res.data);
   };
 
   const handleTextChange = (value: string) => {

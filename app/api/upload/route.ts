@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import pdfParse from "pdf-parse";
+import { getDocument } from "pdfjs-dist";
+
+export const config = {
+  runtime: "edge",
+};
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,15 +15,21 @@ export async function POST(req: NextRequest) {
     }
 
     const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    const buffer = new Uint8Array(bytes);
 
     let extractedText = "";
 
     if (file.name.endsWith(".pdf")) {
-      const pdfData = await pdfParse(buffer);
-      extractedText = pdfData.text;
+      const pdf = await getDocument({ data: buffer }).promise;
+
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        const pageText = content.items.map((item: any) => item.str).join(" ");
+        extractedText += pageText + "\n";
+      }
     } else if (file.name.endsWith(".txt")) {
-      extractedText = buffer.toString("utf-8");
+      extractedText = new TextDecoder("utf-8").decode(buffer);
     } else {
       return NextResponse.json(
         { error: "Unsupported file type" },
@@ -31,7 +41,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error uploading file:", error);
     return NextResponse.json(
-      { error: "Error uploading file" },
+      { error: "Faylni o‘qishda xatolik yuz berdi" },
       { status: 500 }
     );
   }
